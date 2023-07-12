@@ -1,2 +1,1 @@
-# almo_go
-Almo GO Prototipo
+# dason-laravel-admin
