@@ -8,13 +8,13 @@
         <!--- Sidemenu -->
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title" data-key="t-menu">@lang('translation.Menu')</li>
+                <li class="menu-title" data-key="t-menu"><?php echo app('translator')->get('translation.Menu'); ?></li>
 
                 <li>
                     <a href="index">
                         <i data-feather="home"></i>
                         <span class="badge rounded-pill bg-soft-success text-success float-end">9+</span>
-                        <span data-key="t-dashboard">@lang('translation.Dashboards')</span>
+                        <span data-key="t-dashboard"><?php echo app('translator')->get('translation.Dashboards'); ?></span>
                     </a>
                 </li>
                 <li>
@@ -37,3 +37,4 @@
     </div>
 </div>
 <!-- Left Sidebar End -->
+<?php /**PATH C:\xampp\htdocs\almo_go\resources\views/layouts/sidebar.blade.php ENDPATH**/ ?>

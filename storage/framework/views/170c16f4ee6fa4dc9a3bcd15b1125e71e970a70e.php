@@ -8,3 +8,4 @@
         </div>
     </div>
 </footer>
+<?php /**PATH C:\xampp\htdocs\almo_go\resources\views/layouts/footer.blade.php ENDPATH**/ ?>
