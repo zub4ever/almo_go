@@ -1,5 +1,5 @@
 <?php $__env->startSection('title'); ?>
-    <?php echo app('translator')->get('translation.Register'); ?>
+   Registrar
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <div class="auth-page">
@@ -11,13 +11,13 @@
                             <div class="d-flex flex-column h-100">
                                 <div class="mb-4 mb-md-5 text-center">
                                     <a href="<?php echo e(url('/')); ?>" class="d-block auth-logo">
-                                        <img src="assets/images/logo-sm.svg" alt="" height="28"> <span class="logo-txt">Dason</span>
+                                        <img src="assets/images/logo_almo.png" alt="" height="100">
                                     </a>
                                 </div>
                                 <div class="auth-content my-auto">
                                     <div class="text-center">
-                                        <h5 class="mb-0">Register Account</h5>
-                                        <p class="text-muted mt-2">Get your free Dason account now.</p>
+                                        <h5 class="mb-0">Registrar nova conta</h5>
+
                                     </div>
                                     <form class="needs-validation mt-4 pt-2" novalidate method="POST" action="<?php echo e(route('register')); ?>" enctype="multipart/form-data">
                                         <?php echo csrf_field(); ?>
@@ -140,48 +140,21 @@ unset($__errorArgs, $__bag); ?>
                                                 <i data-feather="file"></i>
                                             </div>
                                         </div>
-                                        <div class="mb-4">
-                                            <p class="mb-0">By registering you agree to the Dason <a href="#" class="text-primary">Terms of Use</a></p>
-                                        </div>
+
                                         <div class="mb-3">
-                                            <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
+                                            <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Registrar</button>
                                         </div>
                                     </form>
 
-                                    <div class="mt-4 pt-2 text-center">
-                                        <div class="signin-other-title">
-                                            <h5 class="font-size-14 mb-3 text-muted fw-medium">- Sign up using -</h5>
-                                        </div>
 
-                                        <ul class="list-inline mb-0">
-                                            <li class="list-inline-item">
-                                                <a href="javascript:void()"
-                                                   class="social-list-item bg-primary text-white border-primary">
-                                                    <i class="mdi mdi-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="javascript:void()"
-                                                   class="social-list-item bg-info text-white border-info">
-                                                    <i class="mdi mdi-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <a href="javascript:void()"
-                                                   class="social-list-item bg-danger text-white border-danger">
-                                                    <i class="mdi mdi-google"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
 
                                     <div class="mt-5 text-center">
-                                        <p class="text-muted mb-0">Already have an account ? <a href="auth-login"
+                                        <p class="text-muted mb-0">Já tem uma conta? <a href="login"
                                                                                                 class="text-primary fw-semibold"> Login </a> </p>
                                     </div>
                                 </div>
                                 <div class="mt-4 mt-md-5 text-center">
-                                    <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Dason   . Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p>
+                                    <p class="mb-0"> <script>document.write(new Date().getFullYear())</script> Almo Brasil LTDA</p>
                                 </div>
                             </div>
                         </div>

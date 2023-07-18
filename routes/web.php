@@ -17,7 +17,7 @@ use App\Http\Controllers\CartChekout;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('cartCheckout.welcome');
 });
 
 Route::get('/index', function () {

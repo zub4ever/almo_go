@@ -34,6 +34,7 @@
         .content h1 {
             font-size: 36px;
             margin-bottom: 20px;
+            color: #fff;
         }
 
         .content .btn-start {
