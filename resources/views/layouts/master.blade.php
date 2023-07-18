@@ -30,7 +30,11 @@
                 <!-- container-fluid -->
             </div>
             <!-- End Page-content -->
-            @include('layouts.footer')
+            <!-- Footer -->
+{{--            @include('layouts.footer')--}}
+            <!-- End Page-content -->
+
+
         </div>
         <!-- end main content-->
     </div>

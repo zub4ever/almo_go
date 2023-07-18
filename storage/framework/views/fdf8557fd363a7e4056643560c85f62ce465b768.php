@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('title'); ?>Produtos <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
     <link href="<?php echo e(URL::asset('assets/libs/nouislider/nouislider.min.css')); ?>" rel="stylesheet">
@@ -27,12 +28,15 @@
                         <div class="card-body">
 
                             <div class="product-img position-relative">
-                                <img src="<?php echo e(URL::asset('assets/images/product/img-1.png')); ?>" alt="" class="img-fluid mx-auto d-block">
+                                <img src="<?php echo e(URL::asset('assets/images/product/img-1.png')); ?>" alt=""
+                                     class="img-fluid mx-auto d-block">
                             </div>
                             <div class="d-flex justify-content-between align-items-end mt-4">
                                 <div>
-                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">Half sleeve T-shirt </a></h5>
-                                    <h5 class="my-0"><span class="text-muted me-2"><del>$500</del></span> <b>$450</b></h5>
+                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">Half
+                                            sleeve T-shirt </a></h5>
+                                    <h5 class="my-0"><span class="text-muted me-2"><del>$500</del></span> <b>$450</b>
+                                    </h5>
                                 </div>
                                 <p class="text-muted mb-0">
                                     <i class="bx bxs-star text-warning"></i>
@@ -49,12 +53,15 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="product-img position-relative">
-                                <img src="<?php echo e(URL::asset('assets/images/product/img-2.png')); ?>" alt="" class="img-fluid mx-auto d-block">
+                                <img src="<?php echo e(URL::asset('assets/images/product/img-2.png')); ?>" alt=""
+                                     class="img-fluid mx-auto d-block">
                             </div>
                             <div class="d-flex justify-content-between align-items-end mt-4">
                                 <div>
-                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">Light blue T-shirt</a></h5>
-                                    <h5 class="my-0"><span class="text-muted me-2"><del>$240</del></span> <b>$225</b></h5>
+                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">Light
+                                            blue T-shirt</a></h5>
+                                    <h5 class="my-0"><span class="text-muted me-2"><del>$240</del></span> <b>$225</b>
+                                    </h5>
                                 </div>
                                 <p class="text-muted mb-0">
                                     <i class="bx bxs-star text-warning"></i>
@@ -74,12 +81,15 @@
                                 <span class="badge text-white bg-primary">- 20 %</span>
                             </div>
                             <div class="product-img position-relative">
-                                <img src="<?php echo e(URL::asset('assets/images/product/img-3.png')); ?>" alt="" class="img-fluid mx-auto d-block">
+                                <img src="<?php echo e(URL::asset('assets/images/product/img-3.png')); ?>" alt=""
+                                     class="img-fluid mx-auto d-block">
                             </div>
                             <div class="d-flex justify-content-between align-items-end mt-4">
                                 <div>
-                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">Black Color T-shirt</a></h5>
-                                    <h5 class="my-0"><span class="text-muted me-2"><del>$175</del></span> <b>$152</b></h5>
+                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">Black
+                                            Color T-shirt</a></h5>
+                                    <h5 class="my-0"><span class="text-muted me-2"><del>$175</del></span> <b>$152</b>
+                                    </h5>
                                 </div>
                                 <p class="text-muted mb-0">
                                     <i class="bx bxs-star text-warning"></i>
@@ -96,12 +106,15 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="product-img position-relative">
-                                <img src="<?php echo e(URL::asset('assets/images/product/img-4.png')); ?>" alt="" class="img-fluid mx-auto d-block">
+                                <img src="<?php echo e(URL::asset('assets/images/product/img-4.png')); ?>" alt=""
+                                     class="img-fluid mx-auto d-block">
                             </div>
                             <div class="d-flex justify-content-between align-items-end mt-4">
                                 <div>
-                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">Hoodie (Blue)</a></h5>
-                                    <h5 class="my-0"><span class="text-muted me-2"><del>$150</del></span> <b>$145</b></h5>
+                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">Hoodie
+                                            (Blue)</a></h5>
+                                    <h5 class="my-0"><span class="text-muted me-2"><del>$150</del></span> <b>$145</b>
+                                    </h5>
                                 </div>
                                 <p class="text-muted mb-0">
                                     <i class="bx bxs-star text-warning"></i>
@@ -121,12 +134,15 @@
                                 <span class="badge text-white bg-primary">- 22 %</span>
                             </div>
                             <div class="product-img position-relative">
-                                <img src="<?php echo e(URL::asset('assets/images/product/img-5.png')); ?>" alt="" class="img-fluid mx-auto d-block">
+                                <img src="<?php echo e(URL::asset('assets/images/product/img-5.png')); ?>" alt=""
+                                     class="img-fluid mx-auto d-block">
                             </div>
                             <div class="d-flex justify-content-between align-items-end mt-4">
                                 <div>
-                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">Half sleeve T-Shirt</a></h5>
-                                    <h5 class="my-0"><span class="text-muted me-2"><del>$145</del></span> <b>$138</b></h5>
+                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">Half
+                                            sleeve T-Shirt</a></h5>
+                                    <h5 class="my-0"><span class="text-muted me-2"><del>$145</del></span> <b>$138</b>
+                                    </h5>
                                 </div>
                                 <p class="text-muted mb-0">
                                     <i class="bx bxs-star text-warning"></i>
@@ -147,12 +163,15 @@
                                 <span class="badge text-white bg-primary">- 28 %</span>
                             </div>
                             <div class="product-img position-relative">
-                                <img src="<?php echo e(URL::asset('assets/images/product/img-6.png')); ?>" alt="" class="img-fluid mx-auto d-block">
+                                <img src="<?php echo e(URL::asset('assets/images/product/img-6.png')); ?>" alt=""
+                                     class="img-fluid mx-auto d-block">
                             </div>
                             <div class="d-flex justify-content-between align-items-end mt-4">
                                 <div>
-                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">Green color T-shirt</a></h5>
-                                    <h5 class="my-0"><span class="text-muted me-2"><del>$138</del></span> <b>$135</b></h5>
+                                    <h5 class="mb-3 text-truncate"><a href="javascript: void(0);" class="text-dark">Green
+                                            color T-shirt</a></h5>
+                                    <h5 class="my-0"><span class="text-muted me-2"><del>$138</del></span> <b>$135</b>
+                                    </h5>
                                 </div>
 
 
@@ -213,4 +232,4 @@
     <script src="<?php echo e(URL::asset('/assets/js/app.min.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\almo_go\resources\views/produtosEstoque/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\almo_go\resources\views/produtosEstoque/cartCheckout.php ENDPATH**/ ?>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Produto;
+use App\Http\Controllers\CartChekout;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::middleware('auth')->group(function () {
     //Route::get('/produtoEstoque/novoProduto', 'Produto\ProdutoController@create')->name('novoProduto');
 
 
+    Route::get('ecommerce',[CartChekout\CartCheckoutController::class,'welcome'])->name('ecommerce');
+    Route::get('ecommerce/neworder',[CartChekout\CartCheckoutController::class,'create'])->name('nova.ordem');
 
 
 

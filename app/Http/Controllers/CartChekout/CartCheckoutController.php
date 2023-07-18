@@ -7,7 +7,12 @@ use Illuminate\Http\Request;
 
 class CartCheckoutController extends Controller
 {
-    public function index (){
-        return view("");
+    public function welcome (){
+
+        return view("cartCheckout.welcome");
+    }
+    public function create (){
+
+        return view("cartCheckout.create");
     }
 }
