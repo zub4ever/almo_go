@@ -1,12 +1,12 @@
 @extends('layouts.master')
-@section('title') @lang('translation.Cart') @endsection
+@section('title') Carrinho @endsection
 @section('css')
     <link href="{{ URL::asset('assets/libs/bootstrap-touchspin/bootstrap-touchspin.min.css') }}" rel="stylesheet">
 @endsection
 @section('content')
     @component('components.breadcrumb')
         @slot('li_1') Ecommerce @endslot
-        @slot('title') Cart @endslot
+        @slot('title') Carrinho @endslot
     @endcomponent
     <div class="row">
         <div class="col-12">

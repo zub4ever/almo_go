@@ -26,7 +26,7 @@
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-30%, -70%);
+            transform: translate(-50%, -50%);
             text-align: center;
             color: #f1f1f1;
         }

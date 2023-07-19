@@ -47,13 +47,16 @@ class RegisteredUserController extends Controller
             $avatar->move($avatarPath, $avatarName);
         }
 
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'avatar' => "/images/" . $avatarName,
         ]);
+
+        // Atribuir a role "Client" ao usuário
+        $clientRole = Role::where('name', 'Client')->first();
+        $user->assignRole($clientRole);
 
         event(new Registered($user));
 

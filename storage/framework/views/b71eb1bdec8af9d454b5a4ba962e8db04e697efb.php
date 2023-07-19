@@ -1,10 +1,10 @@
-
 <?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Dashboards'); ?> <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
 
 <link href="<?php echo e(URL::asset('/assets/libs/admin-resources/admin-resources.min.css')); ?>" rel="stylesheet">
 
 <?php $__env->stopSection(); ?>
+<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('Admin')): ?>
 <?php $__env->startSection('content'); ?>
 
 <?php $__env->startComponent('components.breadcrumb'); ?>
@@ -955,7 +955,16 @@
     </div>
     <!-- end col -->
 </div><!-- end row -->
+
 <?php $__env->stopSection(); ?>
+<?php else: ?>
+    <p>Não autorizado</p>
+    <script>
+        setTimeout(function() {
+            window.location.href = "<?php echo e(route('ecommerce')); ?>";
+        }, 2000); // Redireciona
+    </script>
+<?php endif; ?>
 <?php $__env->startSection('script'); ?>
 <!-- apexcharts -->
 <script src="<?php echo e(URL::asset('/assets/libs/apexcharts/apexcharts.min.js')); ?>"></script>
@@ -966,4 +975,4 @@
 <script src="<?php echo e(URL::asset('/assets/js/app.min.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\almo_go\resources\views/cartCheckout.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\almo_go\resources\views/index.blade.php ENDPATH**/ ?>

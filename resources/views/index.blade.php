@@ -5,6 +5,7 @@
 <link href="{{ URL::asset('/assets/libs/admin-resources/admin-resources.min.css') }}" rel="stylesheet">
 
 @endsection
+@can('Admin')
 @section('content')
 
 @component('components.breadcrumb')
@@ -955,7 +956,16 @@
     </div>
     <!-- end col -->
 </div><!-- end row -->
+
 @endsection
+@else
+    <p>Não autorizado</p>
+    <script>
+        setTimeout(function() {
+            window.location.href = "{{ route('ecommerce') }}";
+        }, 2000); // Redireciona
+    </script>
+@endcan
 @section('script')
 <!-- apexcharts -->
 <script src="{{ URL::asset('/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
