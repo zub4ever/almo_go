@@ -1,8 +1,9 @@
-<form action="{{ route('check') }}" method="post" enctype="multipart/form-data">
+
+<h1>Compare Images</h1>
+<form action="{{ route('check') }}" method="post">
     @csrf
-
-    <input type="file" name="image1" />
-    <input type="file" name="image2" />
-
-    <button type="submit">Compare</button>
+    <input type="file" name="image1">
+    <input type="file" name="image2">
+    <input type="submit" value="Compare">
 </form>
+
