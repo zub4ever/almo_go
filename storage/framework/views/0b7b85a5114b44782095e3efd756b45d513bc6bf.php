@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('title'); ?>Ecommerce <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
     <link href="<?php echo e(URL::asset('assets/libs/nouislider/nouislider.min.css')); ?>" rel="stylesheet">

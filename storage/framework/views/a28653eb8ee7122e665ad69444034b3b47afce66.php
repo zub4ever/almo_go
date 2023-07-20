@@ -188,7 +188,7 @@
             </div>
         </div>
     </div>
-   
+
 </div>
 <!-- end row -->
 <?php /**PATH C:\xampp\htdocs\almo_go\resources\views/cartCheckout/form.blade.php ENDPATH**/ ?>
