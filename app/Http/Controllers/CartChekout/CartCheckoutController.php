@@ -37,6 +37,20 @@ class CartCheckoutController extends Controller
         $sourceImageUrl = $request->input('source_image_url');
         $targetImageUrl = $request->input('target_image_url');
 
+        $sourceImage = [
+            'S3Object' => [
+                'Bucket' => 'rekognition-console-v4-prod-cmh',
+                'Name' => 'assets/StaticImageAssets/SampleImages/source3.jpg',
+            ],
+        ];
+
+        $targetImage = [
+            'S3Object' => [
+                'Bucket' => 'rekognition-console-v4-prod-cmh',
+                'Name' => 'assets/StaticImageAssets/SampleImages/target3.jpg',
+            ],
+        ];
+
         $client = new \Aws\Rekognition\RekognitionClient([
             'region' => 'us-east-1',
             'credentials' => [
@@ -47,23 +61,32 @@ class CartCheckoutController extends Controller
         ]);
 
         $response = $client->compareFaces([
-            'SourceImage' => $sourceImageUrl,
-            'TargetImage' => $targetImageUrl,
+            'SourceImage' => $sourceImage,
+            'TargetImage' => $targetImage,
             'SimilarityThreshold' => 0.5,
         ]);
 
         if ($response['ResponseMetadata']['HTTPStatusCode'] == 200) {
             $results = json_decode($response->getBody(), true);
 
-            return response()->json([
-                'similarity' => $results['Similarity'],
-            ]);
+            $similarity = $results['Similarity'];
+
+            if ($similarity >= 0.5) {
+                return response()->json([
+                    'similarity' => $similarity,
+                    'message' => 'As imagens são semelhantes.',
+                ]);
+            } else {
+                return response()->json([
+                    'similarity' => $similarity,
+                    'message' => 'As imagens não são semelhantes.',
+                ]);
+            }
         } else {
             Log::error('Erro ao comparar imagens.');
             return abort(400, 'Erro ao comparar imagens.');
         }
     }
-
 
 
 }
