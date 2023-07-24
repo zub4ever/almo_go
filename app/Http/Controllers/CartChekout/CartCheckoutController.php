@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Intervention\Image\Image;
-
+use Google\Cloud\Vision\V1\Gapic\ImageAnnotatorGapicClient;
+use Google\Cloud\Vision\V1\Client\ImageAnnotatorClient;
 class CartCheckoutController extends Controller
 {
     public function welcome()
@@ -34,59 +35,42 @@ class CartCheckoutController extends Controller
 
     public function check(Request $request)
     {
-        $sourceImageUrl = $request->input('source_image_url');
-        $targetImageUrl = $request->input('target_image_url');
 
-        $sourceImage = [
-            'S3Object' => [
-                'Bucket' => 'rekognition-console-v4-prod-cmh',
-                'Name' => 'assets/StaticImageAssets/SampleImages/source3.jpg',
-            ],
-        ];
+        $sourceImage = $request->input('source_image');
+        $targetImage = $request->input('target_image');
 
-        $targetImage = [
-            'S3Object' => [
-                'Bucket' => 'rekognition-console-v4-prod-cmh',
-                'Name' => 'assets/StaticImageAssets/SampleImages/target3.jpg',
-            ],
-        ];
-
-        $client = new \Aws\Rekognition\RekognitionClient([
-            'region' => 'us-east-1',
-            'credentials' => [
-                'key' => env('AWS_ACCESS_KEY_ID'),
-                'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            ],
-            'version' => 'latest',
+        $client = new ImageAnnotatorClient([
+            'projectId' => 'theta-camera-393814',
+            'region' => 'us-central1',
+            'client_id' => '1018789608858-vu72vb6hidvf4fr4jmadvkvfp6bs5pml.apps.googleusercontent.com',
+            'client_secret' => file_get_contents('js/client_secret.json'),
         ]);
 
-        $response = $client->compareFaces([
-            'SourceImage' => $sourceImage,
-            'TargetImage' => $targetImage,
-            'SimilarityThreshold' => 0.5,
+        $sourceImage = file_get_contents($sourceImage);
+        $targetImage = file_get_contents($targetImage);
+
+        $result = $client->compareFaces([
+            'sourceImage' => $sourceImage,
+            'targetImage' => $targetImage,
         ]);
 
-        if ($response['ResponseMetadata']['HTTPStatusCode'] == 200) {
-            $results = json_decode($response->getBody(), true);
+        $similarity = $result->getSimilarity();
 
-            $similarity = $results['Similarity'];
-
-            if ($similarity >= 0.5) {
-                return response()->json([
-                    'similarity' => $similarity,
-                    'message' => 'As imagens são semelhantes.',
-                ]);
-            } else {
-                return response()->json([
-                    'similarity' => $similarity,
-                    'message' => 'As imagens não são semelhantes.',
-                ]);
-            }
+        if ($similarity >= 0.5) {
+            return response()->json([
+                'similarity' => $similarity,
+                'message' => 'As imagens são semelhantes.',
+            ]);
         } else {
-            Log::error('Erro ao comparar imagens.');
-            return abort(400, 'Erro ao comparar imagens.');
+            return response()->json([
+                'similarity' => $similarity,
+                'message' => 'As imagens não são semelhantes.',
+            ]);
         }
     }
+
+
+
 
 
 }
