@@ -1,6 +1,6 @@
 @extends('layouts.master-without-nav')
 @section('title')
-   Registrar
+    Registrar
 @endsection
 @section('content')
     <div class="auth-page">
@@ -20,10 +20,14 @@
                                         <h5 class="mb-0">Registrar nova conta</h5>
 
                                     </div>
-                                    <form class="needs-validation mt-4 pt-2" novalidate method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                                    <form class="needs-validation mt-4 pt-2" novalidate method="POST"
+                                          action="{{ route('register') }}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-floating form-floating-custom mb-4">
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" id="input-email" placeholder="Enter Email" required>
+                                            <input type="email"
+                                                   class="form-control @error('email') is-invalid @enderror"
+                                                   name="email" value="{{ old('email') }}" id="input-email"
+                                                   placeholder="Enter Email" required>
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -36,7 +40,9 @@
                                         </div>
 
                                         <div class="form-floating form-floating-custom mb-4">
-                                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" id="input-username" placeholder="Enter User Name" required>
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                                   name="name" value="{{ old('name') }}" id="input-username"
+                                                   placeholder="Enter User Name" required>
                                             @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -48,7 +54,10 @@
                                             </div>
                                         </div>
                                         <div class="form-floating form-floating-custom mb-4">
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"  id="input-password" placeholder="Enter Password" required>
+                                            <input type="password"
+                                                   class="form-control @error('password') is-invalid @enderror"
+                                                   name="password" id="input-password" placeholder="Enter Password"
+                                                   required>
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -60,7 +69,10 @@
                                             </div>
                                         </div>
                                         <div class="form-floating form-floating-custom mb-4">
-                                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation"  id="input-password" placeholder="Enter Password" required>
+                                            <input type="password"
+                                                   class="form-control @error('password_confirmation') is-invalid @enderror"
+                                                   name="password_confirmation" id="input-password"
+                                                   placeholder="Enter Password" required>
 
                                             <label for="input-password">Confirm Password</label>
                                             <div class="form-floating-icon">
@@ -68,31 +80,39 @@
                                             </div>
                                         </div>
                                         <div class="form-floating form-floating-custom mb-4">
-                                            <input type="file" class="form-control @error('avatar') is-invalid @enderror" name="avatar"  id="input-avatar" required>
+                                            <input type="file" accept="image/*" capture="camera"
+                                                   class="form-control @error('avatar') is-invalid @enderror"
+                                                   name="avatar" id="input-avatar" required>
                                             @error('avatar')
                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
+        <strong>{{ $message }}</strong>
+    </span>
                                             @enderror
                                             <div class="form-floating-icon">
                                                 <i data-feather="file"></i>
                                             </div>
                                         </div>
 
+
                                         <div class="mb-3">
-                                            <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Registrar</button>
+                                            <button class="btn btn-primary w-100 waves-effect waves-light"
+                                                    type="submit">Registrar
+                                            </button>
                                         </div>
                                     </form>
 
 
-
                                     <div class="mt-5 text-center">
                                         <p class="text-muted mb-0">Já tem uma conta? <a href="login"
-                                                                                                class="text-primary fw-semibold"> Login </a> </p>
+                                                                                        class="text-primary fw-semibold">
+                                                Login </a></p>
                                     </div>
                                 </div>
                                 <div class="mt-4 mt-md-5 text-center">
-                                    <p class="mb-0"> <script>document.write(new Date().getFullYear())</script> Almo Brasil LTDA</p>
+                                    <p class="mb-0">
+                                        <script>document.write(new Date().getFullYear())</script>
+                                        Almo Brasil LTDA
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -120,15 +140,23 @@
                             <div class="col-xl-7">
                                 <div class="p-0 p-sm-4 px-xl-0">
                                     <div id="reviewcarouselIndicators" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-indicators auth-carousel carousel-indicators-rounded justify-content-center mb-0">
-                                            <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                                                <img src="assets/images/users/avatar-1.jpg" class="avatar-md img-fluid rounded-circle d-block" alt="...">
+                                        <div
+                                            class="carousel-indicators auth-carousel carousel-indicators-rounded justify-content-center mb-0">
+                                            <button type="button" data-bs-target="#reviewcarouselIndicators"
+                                                    data-bs-slide-to="0" class="active" aria-current="true"
+                                                    aria-label="Slide 1">
+                                                <img src="assets/images/users/avatar-1.jpg"
+                                                     class="avatar-md img-fluid rounded-circle d-block" alt="...">
                                             </button>
-                                            <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="1" aria-label="Slide 2">
-                                                <img src="assets/images/users/avatar-2.jpg" class="avatar-md img-fluid rounded-circle d-block" alt="...">
+                                            <button type="button" data-bs-target="#reviewcarouselIndicators"
+                                                    data-bs-slide-to="1" aria-label="Slide 2">
+                                                <img src="assets/images/users/avatar-2.jpg"
+                                                     class="avatar-md img-fluid rounded-circle d-block" alt="...">
                                             </button>
-                                            <button type="button" data-bs-target="#reviewcarouselIndicators" data-bs-slide-to="2" aria-label="Slide 3">
-                                                <img src="assets/images/users/avatar-3.jpg" class="avatar-md img-fluid rounded-circle d-block" alt="...">
+                                            <button type="button" data-bs-target="#reviewcarouselIndicators"
+                                                    data-bs-slide-to="2" aria-label="Slide 3">
+                                                <img src="assets/images/users/avatar-3.jpg"
+                                                     class="avatar-md img-fluid rounded-circle d-block" alt="...">
                                             </button>
                                         </div>
                                         <!-- end carouselIndicators -->

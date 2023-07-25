@@ -180,8 +180,34 @@
                     </div> <!-- end col -->
                     <div class="col-sm-6">
                         <div class="text-sm-end mt-2 mt-sm-0">
-                            <a href="<?php echo e(url('ecommerce-checkout')); ?>" class="btn btn-success">
-                                <i class="mdi mdi-cart-arrow-right me-1"></i> Checkout </a>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cameraModal">
+                                Checkout
+                            </button>
+
+
+                            <!-- The camera modal -->
+                            <div class="modal fade" id="cameraModal" tabindex="-1" aria-labelledby="cameraModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="cameraModalLabel">Capture a Foto</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <video id="cameraStream" width="100%" height="auto" autoplay playsinline></video>
+                                            <canvas id="imagePreview" style="display: none;"></canvas>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                            <button type="button" class="btn btn-primary" id="btn-capture">Capturar</button>
+                                            <button type="button" class="btn btn-success d-none" id="btn-send" disabled>Enviar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- -->
                         </div>
                     </div> <!-- end col -->
                 </div> <!-- end row-->
@@ -191,4 +217,67 @@
 
 </div>
 <!-- end row -->
+<script>
+    const cameraStream = document.getElementById('cameraStream');
+    const imagePreview = document.getElementById('imagePreview');
+    const btnCapture = document.getElementById('btn-capture');
+    const btnSend = document.getElementById('btn-send');
+
+    // Função para iniciar a câmera
+    async function initCamera() {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            cameraStream.srcObject = stream;
+            cameraStream.play();
+        } catch (error) {
+            console.error('Erro ao acessar a câmera:', error);
+        }
+    }
+
+    // Evento do botão "Capturar"
+    btnCapture.addEventListener('click', () => {
+        const context = imagePreview.getContext('2d');
+        context.drawImage(cameraStream, 0, 0, imagePreview.width, imagePreview.height);
+        cameraStream.style.display = 'none';
+        imagePreview.style.display = 'block';
+        btnCapture.style.display = 'none';
+        btnSend.style.display = 'block';
+    });
+
+    // Evento do botão "Enviar"
+    btnSend.addEventListener('click', () => {
+        // Converter a imagem em base64 e enviar para a rota "check"
+        const imageDataURL = imagePreview.toDataURL('image/jpeg');
+        sendImageToCheck(imageDataURL);
+
+        // Fechar o modal após o envio
+        const modal = new bootstrap.Modal(document.getElementById('cameraModal'));
+        modal.hide();
+    });
+
+    // Função para enviar a imagem capturada para a rota "check"
+    function sendImageToCheck(imageDataURL) {
+        // Crie um elemento de formulário e adicione a imagem como um campo de formulário
+        const form = document.createElement('form');
+        form.method = 'post';
+        form.action = '<?php echo e(route('check')); ?>';
+
+        const imageInput = document.createElement('input');
+        imageInput.type = 'hidden';
+        imageInput.name = 'target_image';
+        imageInput.value = imageDataURL;
+
+        form.appendChild(imageInput);
+
+        // Adicionar o formulário à página e enviá-lo
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    // Inicializar a câmera ao abrir o modal
+    const cameraModal = document.getElementById('cameraModal');
+    cameraModal.addEventListener('shown.bs.modal', initCamera);
+</script>
+
+
 <?php /**PATH C:\xampp\htdocs\almo_go\resources\views/cartCheckout/form.blade.php ENDPATH**/ ?>

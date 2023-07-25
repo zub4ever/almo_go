@@ -43,7 +43,7 @@ class CartCheckoutController extends Controller
 
         $user = Auth::user();
 
-        $avatarPath = public_path($user->avatar); // Supondo que o campo 'avatar' contém o caminho da imagem relativo a 'public/images/1689193425.png'
+        $avatarPath = public_path($user->avatar);
 
         // Ler o conteúdo da imagem do arquivo no caminho especificado
         $sourceImageBytes = file_get_contents($avatarPath);
