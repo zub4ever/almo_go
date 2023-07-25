@@ -1,8 +1,11 @@
+@extends('layouts.master')
 
-<h1>Compare Images</h1><b><br></b>
+@section('content')
+<h1>Comparando imagens</h1><b><br></b>
 <form action="{{ route('check') }}" method="post" enctype="multipart/form-data">
     @csrf
-    <input type="file" name="source_image_url" />
-    <input type="file" name="target_image_url" />
-    <button type="submit">Compare</button>
+
+    <input type="file" name="target_image" accept="image/*" />
+    <button type="submit">Comparar</button>
 </form>
+@endsection

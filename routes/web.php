@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('ecommerce',[CartChekout\CartCheckoutController::class,'welcome'])->name('ecommerce');
     Route::get('ecommerce/neworder',[CartChekout\CartCheckoutController::class,'create'])->name('nova.ordem');
     Route::get('ecommerce/neworder/checkout',[CartChekout\CartCheckoutController::class,'checkout'])->name('checkout');
-    Route::post('ecommerce/neworder/checkout',[CartChekout\CartCheckoutController::class,'check'])->name('check');
+    Route::post('commerce/neworder/checkout',[CartChekout\CartCheckoutController::class,'check'])->name('check');
 
 
 

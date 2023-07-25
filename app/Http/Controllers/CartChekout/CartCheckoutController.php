@@ -8,9 +8,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Image;
 use Google\Cloud\Vision\V1\Gapic\ImageAnnotatorGapicClient;
 use Google\Cloud\Vision\V1\Client\ImageAnnotatorClient;
+use Aws\Rekognition\RekognitionClient;
+use Illuminate\Support\Facades\Auth;
+
+
 class CartCheckoutController extends Controller
 {
     public function welcome()
@@ -36,39 +41,55 @@ class CartCheckoutController extends Controller
     public function check(Request $request)
     {
 
-        $sourceImage = $request->input('source_image');
-        $targetImage = $request->input('target_image');
+        $user = Auth::user();
 
-        $client = new ImageAnnotatorClient([
-            'projectId' => 'theta-camera-393814',
-            'region' => 'us-central1',
-            'client_id' => '1018789608858-vu72vb6hidvf4fr4jmadvkvfp6bs5pml.apps.googleusercontent.com',
-            'client_secret' => file_get_contents('js/client_secret.json'),
+        $avatarPath = public_path($user->avatar); // Supondo que o campo 'avatar' contém o caminho da imagem relativo a 'public/images/1689193425.png'
+
+        // Ler o conteúdo da imagem do arquivo no caminho especificado
+        $sourceImageBytes = file_get_contents($avatarPath);
+
+
+
+
+        $targetImage = $request->file('target_image');
+
+
+
+
+        //dd($sourceImageBytes);
+        if ($targetImage === null) {
+            return response()->json(['error' => 'SourceImage or TargetImage is null'], 400);
+        }
+
+        $client = new RekognitionClient([
+            'version' => 'latest',
+            'region' => env('AWS_REGION'),
+            'credentials' => [
+                'key' => env('AWS_ACCESS_KEY_ID'),
+                'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            ],
         ]);
 
-        $sourceImage = file_get_contents($sourceImage);
-        $targetImage = file_get_contents($targetImage);
+        $params = [
+            'QualityFilter' => 'AUTO',
+            'SourceImage' => [
+                'Bytes' => $sourceImageBytes,
+            ],
+            'TargetImage' => [
+                'Bytes' => file_get_contents($targetImage->path()),
+            ],
+            'SimilarityThreshold' => 0,
+        ];
 
-        $result = $client->compareFaces([
-            'sourceImage' => $sourceImage,
-            'targetImage' => $targetImage,
-        ]);
+        try {
+            $result = $client->compareFaces($params);
 
-        $similarity = $result->getSimilarity();
-
-        if ($similarity >= 0.5) {
-            return response()->json([
-                'similarity' => $similarity,
-                'message' => 'As imagens são semelhantes.',
-            ]);
-        } else {
-            return response()->json([
-                'similarity' => $similarity,
-                'message' => 'As imagens não são semelhantes.',
-            ]);
+            return response()->json($result['FaceMatches']);
+        } catch (\Exception $e) {
+            // Lidar com qualquer erro que possa ocorrer
+            return response()->json(['error' => $e->getMessage()], 500);
         }
     }
-
 
 
 
