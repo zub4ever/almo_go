@@ -41,6 +41,11 @@ Route::middleware('auth')->group(function () {
     Route::get('ecommerce/neworder/checkout',[CartChekout\CartCheckoutController::class,'checkout'])->name('checkout');
     Route::post('commerce/neworder/checkout',[CartChekout\CartCheckoutController::class,'check'])->name('check');
 
+    Route::get('dataDados',[App\Http\Controllers\TesteAPI\RetornoJSON::class,'data'])->name('data');
+    //Route::post('data_api',[App\Http\Controllers\TesteAPI\RetornoJSON::class,'retorno'])->name('retorno');
+
+
+
 
 
 });

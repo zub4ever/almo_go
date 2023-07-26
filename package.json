@@ -97,6 +97,7 @@
         "table-edits": "^0.0.3",
         "tinymce": "^5.0.16",
         "twitter-bootstrap-wizard": "^1.2.0",
+        "vue": "^3.2.36",
         "webpack-rtl-plugin": "^2.0.0",
         "wnumb": "^1.2.0"
     }

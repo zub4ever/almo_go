@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title'); ?>Ecommerce <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
     <link href="<?php echo e(URL::asset('assets/libs/nouislider/nouislider.min.css')); ?>" rel="stylesheet">
@@ -50,12 +49,12 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <video autoplay muted loop id="myVideo">
-        <source src="videos/WELCOME.mp4" type="video/mp4">
+        <source src="videos/almo.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
 
     <div class="content">
-        <h1>Bem Vindo a Almo Go</h1>
+        
         <a class="btn-start" href="<?php echo e(route('nova.ordem')); ?>">Iniciar</a>
 
     </div>
