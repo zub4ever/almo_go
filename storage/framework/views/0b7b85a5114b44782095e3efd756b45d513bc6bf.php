@@ -54,7 +54,7 @@
     </video>
 
     <div class="content">
-        
+
         <a class="btn-start" href="<?php echo e(route('nova.ordem')); ?>">Iniciar</a>
 
     </div>

@@ -3,17 +3,19 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table align-middle mb-0 table-nowrap" id="data-table">
+                    <table class="table align-middle mb-0 table-nowrap" id="tabelaLeituras">
                         <thead class="table-light">
                         <tr>
-                            <th>Produto</th>
-                            <th>Descrição</th>
-                            <th>Preço</th>
-                            <th>Quantidade</th>
-                            <th colspan="2">Total</th>
+                            <th>TAG</th>
+{{--                            <th>Descrição</th>--}}
+{{--                            <th>Preço</th>--}}
+{{--                            <th>Quantidade</th>--}}
+{{--                            <th colspan="2">Total</th>--}}
                         </tr>
                         </thead>
-
+                        <tbody>
+                        <!-- Aqui os dados serão adicionados dinamicamente pela atualização em tempo real -->
+                        </tbody>
                     </table>
                 </div>
                 <div class="row mt-4">
@@ -26,53 +28,42 @@
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cameraModal">
                                 Checkout
                             </button>
-
-
                         </div>
                     </div> <!-- end col -->
                 </div> <!-- end row-->
             </div>
         </div>
     </div>
-
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+
 <script>
-    $(document).ready(function() {
-        function atualizarTabela() {
-            // Faz a requisição GET para a API usando AJAX
-            $.ajax({
-                type: 'GET',
-                url: 'URL_DA_API',
-                dataType: 'json',
-                success: function(response) {
-                    // 'response' contém os dados retornados pela API
+    const pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
+        cluster: '{{ env('PUSHER_APP_CLUSTER') }}',
+        encrypted: true
+    });
 
-                    // Limpa a tabela antes de adicionar os novos dados
-                    $('#data-table tbody').empty();
+    const channel = pusher.subscribe('leituras');
 
-                    // Adiciona os dados retornados da API na tabela
-                    $.each(response, function(index, data) {
-                        $('#data-table tbody').append(
-                            '<tr>' +
-                            '<td>' + data.id + '</td>' +
-                            '<td>' + data.nome + '</td>' +
-                            '<td>' + data.email + '</td>' +
-                            // Adicione outras colunas conforme necessário
-                            '</tr>'
-                        );
-                    });
-                },
-                error: function() {
-                    // Caso ocorra algum erro na requisição
-                    console.error('Ocorreu um erro ao obter os dados da API.');
-                }
-            });
-        }
+    channel.bind('nova-leitura-event', function (leitura) {
+        // 'leitura' contém os dados enviados pelo evento NovaLeituraEvent
 
-        // Atualizar a tabela a cada 5 segundos (5000 milissegundos)
-        setInterval(atualizarTabela, 5000);
+        // Adicionar os dados na tabela
+        const tabela = document.getElementById('tabelaLeituras').getElementsByTagName('tbody')[0];
+
+        // Criar uma nova linha na tabela
+        const novaLinha = tabela.insertRow();
+
+        // Preencher as células da nova linha com os dados da leitura
+        novaLinha.insertCell(0).innerHTML = leitura.id;
+        novaLinha.insertCell(1).innerHTML = leitura.tag_rfid;
+
+        // Adicionar outras colunas, se necessário
+
+        // Scroll automático para mostrar a leitura mais recente
+        document.getElementById('tabelaLeituras').scrollTop = document.getElementById('tabelaLeituras').scrollHeight;
     });
 </script>
-

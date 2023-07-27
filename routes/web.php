@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Produto;
 use App\Http\Controllers\CartChekout;
@@ -41,11 +42,14 @@ Route::middleware('auth')->group(function () {
     Route::get('ecommerce/neworder/checkout',[CartChekout\CartCheckoutController::class,'checkout'])->name('checkout');
     Route::post('commerce/neworder/checkout',[CartChekout\CartCheckoutController::class,'check'])->name('check');
 
-    Route::get('dataDados',[App\Http\Controllers\TesteAPI\RetornoJSON::class,'data'])->name('data');
+    //Route::get('dataDados',[App\Http\Controllers\TesteAPI\ExibicaoController::class,'receberLeituras'])->name('data');
     //Route::post('data_api',[App\Http\Controllers\TesteAPI\RetornoJSON::class,'retorno'])->name('retorno');
+    Route::post('exibicao',[App\Http\Controllers\TesteAPI\ExibicaoController::class,'exibirDadosLeitura'])->name('exibirDadosLeitura');
 
 
-
+    Broadcast::channel('leituras', function ($user) {
+        return true; // Aqui você pode adicionar alguma lógica para autorizar ou restringir o acesso ao canal
+    });
 
 
 });

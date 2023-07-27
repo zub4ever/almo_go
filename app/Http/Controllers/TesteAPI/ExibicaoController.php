@@ -1,16 +1,22 @@
 <?php
 
-// ExibicaoController.php
+namespace App\Http\Controllers\TesteAPI;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Events\NovaLeituraEvent;
 
 class ExibicaoController extends Controller
 {
-    public function exibir($data)
+    public function receberLeituras(Request $request)
     {
-        // Aqui você pode fazer o que for necessário com os dados antes de exibi-los na view
+        // Recebe os dados passados como parâmetro na rota e armazena na variável $response
+        $response = $request->session()->get('response');
 
-        // Exibir a view passando os dados como parâmetro
-        return view('nome_da_sua_view', ['data' => $data]);
+        // Aqui você pode processar os dados recebidos e passá-los para a view da forma que desejar
+        // Por exemplo, você pode passar a variável $response para a view e exibi-la lá
+
+        return view('nome_da_sua_view', ['response' => $response]);
     }
+
 }

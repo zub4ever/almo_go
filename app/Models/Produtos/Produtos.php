@@ -15,10 +15,10 @@ class Produtos extends Model
      *
      * @var array
      */
-    protected $table = 'almo_go_produtos';
-    public $timestamps = true;
+    protected $table = 'produto';
+    //public $timestamps = true;
     protected $fillable = [
-        'nm_produto'
+        'tag_rfid'
     ];
     protected $guarded = [];
 
