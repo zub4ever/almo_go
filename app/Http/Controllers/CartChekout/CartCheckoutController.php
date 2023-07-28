@@ -84,11 +84,26 @@ class CartCheckoutController extends Controller
         try {
             $result = $client->compareFaces($params);
 
-            return response()->json($result['FaceMatches']);
+
+            return redirect()->route('comprafinalizada')->with('result', $result['FaceMatches']);
+
         } catch (\Exception $e) {
             // Lidar com qualquer erro que possa ocorrer
             return response()->json(['error' => $e->getMessage()], 500);
         }
+    }
+
+    public function comprafinalizada(){
+
+        $result = session('result');
+
+        return view('cartCheckout.comprafinalizada', ['result' => $result]);
+    }
+
+    public function opcaopagamento(){
+
+
+        return view('cartCheckout.opcaopagamento');
     }
 
 

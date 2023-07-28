@@ -1,23 +1,148 @@
 @extends('layouts.master')
 
 @section('content')
-    <form action="{{ route('check') }}" method="post" enctype="multipart/form-data">
+    <style>
+        /* Estilo para centralizar horizontalmente e verticalmente */
+        body, html {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .validate-button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .camera-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Estilos para a modal de carregamento */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        /* Estilo para o GIF de carregamento */
+        .loading-gif {
+            display: block;
+            max-width: 100px;
+            margin: 0 auto;
+        }
+
+        /* Estilo para a visualização da imagem */
+        #image-preview img {
+            max-width: 300px; /* Ajuste o tamanho máximo da imagem, se necessário */
+        }
+    </style>
+
+    <form action="{{ route('check') }}" method="post" enctype="multipart/form-data" id="camera-form">
         @csrf
+        <div class="button-container">
+            <label for="target_image" class="camera-button">Validar Face</label>
+            <input type="file" name="target_image" id="target_image" accept="image/*" capture="camera" style="display: none;">
+            <br>
 
-        <div id="camera-container">
-            <video id="camera-preview" autoplay playsinline></video>
-            <canvas id="captured-image" style="display: none;"></canvas>
-            <button type="button" id="take-photo">Tirar Foto</button>
+            <div id="image-preview"></div>
+
+
+            <br>
+            <button type="submit" class="validate-button">Realizar pagamento</button>
         </div>
-
-        <input type="hidden" name="target_image" id="target-image-input">
-        <button type="submit" id="submit-btn" style="display: none;">Enviar</button>
     </form>
 
+    <!-- Modal de carregamento -->
+    <div class="modal" id="loadingModal">
+        <div class="modal-content">
+            <img src="{{ asset('images/loading.gif') }}" alt="Carregando..." class="loading-gif">
+        </div>
+    </div>
+
+    <script>
+
+        function openFileExplorer() {
+            document.getElementById('target_image').click();
+            // Remova o evento de clique após a primeira captura
+            document.querySelector('.camera-button').removeEventListener('click', openFileExplorer);
+        }
 
 
 
+        document.querySelector('.camera-button').addEventListener('click', function() {
+            document.getElementById('target_image').click();
+        });
 
+        // Captura o evento de alteração do input de arquivo
+        document.getElementById('target_image').addEventListener('change', function(e) {
+            const fileInput = e.target;
+            const imagePreview = document.getElementById('image-preview');
 
+            // Limpa qualquer visualização anterior
+            imagePreview.innerHTML = '';
 
+            // Verifica se um arquivo foi selecionado
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+
+                // Quando o leitor de arquivos terminar de ler o arquivo
+                reader.onload = function(e) {
+                    // Cria um elemento de imagem e define o atributo src para o URL da imagem carregada
+                    const imageElement = document.createElement('img');
+                    imageElement.src = e.target.result;
+
+                    // Adiciona a imagem à div de visualização
+                    imagePreview.appendChild(imageElement);
+                };
+
+                // Lê o arquivo como um URL de dados
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        });
+
+        // Exibir a modal de carregamento quando o formulário é enviado
+        document.getElementById('camera-form').addEventListener('submit', function() {
+            const loadingModal = document.getElementById('loadingModal');
+            loadingModal.style.display = 'flex';
+        });
+
+        // Exemplo de como ocultar a modal de carregamento após o retorno da rota "check"
+        // Aqui, você deve substituir esta parte pelo código real do seu backend
+        // Neste exemplo, estamos simulando um tempo de espera de 3 segundos antes de ocultar a modal
+        setTimeout(function() {
+            const loadingModal = document.getElementById('loadingModal');
+            loadingModal.style.display = 'none';
+        }, 3000);
+    </script>
 @endsection

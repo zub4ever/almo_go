@@ -41,6 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::get('ecommerce/neworder',[CartChekout\CartCheckoutController::class,'create'])->name('nova.ordem');
     Route::get('ecommerce/neworder/checkout',[CartChekout\CartCheckoutController::class,'checkout'])->name('checkout');
     Route::post('commerce/neworder/checkout',[CartChekout\CartCheckoutController::class,'check'])->name('check');
+    Route::get('ecommerce/finish',[CartChekout\CartCheckoutController::class,'comprafinalizada'])->name('comprafinalizada');
+    Route::get('ecommerce/options',[CartChekout\CartCheckoutController::class,'opcaopagamento'])->name('opcaopagamento');
 
     //Route::get('dataDados',[App\Http\Controllers\TesteAPI\ExibicaoController::class,'receberLeituras'])->name('data');
     //Route::post('data_api',[App\Http\Controllers\TesteAPI\RetornoJSON::class,'retorno'])->name('retorno');

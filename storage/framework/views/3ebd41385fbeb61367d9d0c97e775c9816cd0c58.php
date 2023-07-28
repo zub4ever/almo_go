@@ -137,12 +137,13 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
+            <?php if(Route::has('register')): ?>
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                   href="<?php echo e(route('register')); ?>">
+                    <?php echo e(__('Registre-se')); ?>
 
-
-
-
-
-
+                </a>
+            <?php endif; ?>
 
             <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.primary-button','data' => ['class' => 'ml-3']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? (array) $attributes->getIterator() : [])); ?>
