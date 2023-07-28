@@ -13,13 +13,29 @@
             font-size: 17px;
         }
 
-        #myVideo {
+        /* Adiciona estilo para tornar o vídeo responsivo */
+        .video-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            overflow: hidden;
+        }
+
+        #myVideo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            transform: translateX(-50%) translateY(-50%);
+            
+            background-size: cover;
+            transition: 1s opacity;
         }
 
         .content {
@@ -39,24 +55,26 @@
 
         .content .btn-start {
             font-size: 24px;
-            padding: 15px 30px;
+            padding: 10px 20px;
             border: none;
             background-color: #00BFFF;
             color: #fff;
             cursor: pointer;
+
         }
     </style>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-    <video autoplay muted loop id="myVideo">
-        <source src="videos/almo.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
+    <!-- Adiciona o contêiner para o vídeo -->
+    <div class="video-container">
+        <video autoplay muted loop id="myVideo">
+            <source src="videos/WELCOME.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
 
     <div class="content">
-
         <a class="btn-start" href="<?php echo e(route('nova.ordem')); ?>">Iniciar</a>
-
     </div>
 
     <script>
@@ -64,10 +82,9 @@
         var btn = document.querySelector(".btn-start");
 
         btn.addEventListener("click", function() {
-            // Lógica para o botão "Iniciar"
+
         });
     </script>
-
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
     <script src="<?php echo e(URL::asset('assets/js/pages/ecommerce-product-list.init.js')); ?>"></script>

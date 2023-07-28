@@ -14,7 +14,117 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <!-- Aqui os dados serão adicionados dinamicamente pela atualização em tempo real -->
+                        <tr>
+                            <td>
+                                <img src="{{ URL::asset('assets/images/product/pingles.png') }}" alt="product-img"
+                                     title="product-img" class="avatar-md" />
+                            </td>
+                            <td>
+                                <h5 class="font-size-14 text-truncate"><a href="{{ url('ecommerce-product-detail') }}" class="text-dark">BATATA PRINGLES CHURRASCO TUBO 109G</a></h5>
+                                <p class="mb-0">Categoria : <span class="fw-medium">Snakcs</span></p>
+                            </td>
+                            <td>
+                                R$14,99
+                            </td>
+                            <td>
+                                <span class="fw-medium">1</span>
+                            </td>
+                            <td>
+                                R$14,99
+                            </td>
+                            <td>
+                                <a href="javascript:void(0);" class="action-icon text-danger"> <i class="mdi mdi-trash-can font-size-18"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="{{ URL::asset('assets/images/product/cookie.jpeg') }}" alt="product-img"
+                                     title="product-img" class="avatar-md" />
+                            </td>
+                            <td>
+                                <h5 class="font-size-14 text-truncate"><a href="{{ url('ecommerce-product-detail') }}" class="text-dark">BISCOITO COOKIE ORIGINAL BAUDUCCO PACOTE 100G</a></h5>
+                                <p class="mb-0">Categoria : <span class="fw-medium">Biscoitos</span></p>
+                            </td>
+                            <td>
+                                R$6,99
+                            </td>
+                            <td>
+                                <span class="fw-medium">1</span>
+                            </td>
+                            <td>
+                                R$6,99
+                            </td>
+                            <td>
+                                <a href="javascript:void(0);" class="action-icon text-danger"> <i class="mdi mdi-trash-can font-size-18"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="{{ URL::asset('assets/images/product/bauduco.jpeg') }}" alt="product-img"
+                                     title="product-img" class="avatar-md" />
+                            </td>
+                            <td>
+                                <h5 class="font-size-14 text-truncate"><a href="{{ url('ecommerce-product-detail') }}" class="text-dark">BISCOITO WAFER RECHEIO MORANGO BAUDUCCO  140G</a></h5>
+                                <p class="mb-0">Categoria : <span class="fw-medium">Biscoitos</span></p>
+                            </td>
+                            <td>
+                                R$5,49
+                            </td>
+                            <td>
+                                <span class="fw-medium">1</span>
+                            </td>
+                            <td>
+                                R$5,49
+                            </td>
+                            <td>
+                                <a href="javascript:void(0);" class="action-icon text-danger"> <i class="mdi mdi-trash-can font-size-18"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="{{ URL::asset('assets/images/product/pao.jpg') }}" alt="product-img"
+                                     title="product-img" class="avatar-md" />
+                            </td>
+                            <td>
+                                <h5 class="font-size-14 text-truncate" class="text-dark">PÃO DE FORMA TRADICIONAL BAUDUCCO PACOTE 390G</h5>
+                                <p class="mb-0">Categoria : <span class="fw-medium">Pães</span></p>
+                            </td>
+                            <td>
+                                R$11,99
+                            </td>
+                            <td>
+                                <span class="fw-medium">1</span>
+                            </td>
+                            <td>
+                                R$11,99
+                            </td>
+                            <td>
+                                <a href="javascript:void(0);" class="action-icon text-danger"> <i class="mdi mdi-trash-can font-size-18"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="{{ URL::asset('assets/images/product/scnikers.jpg') }}" alt="product-img"
+                                     title="product-img" class="avatar-md" />
+                            </td>
+                            <td>
+                                <h5 class="font-size-14 text-truncate" class="text-dark">CHOCOLATE SNICKERS 45G - AMENDOIM</h5>
+                                <p class="mb-0">Categoria: <span class="fw-medium">Snickers</span></p>
+                            </td>
+                            <td>
+                                R$3,99
+                            </td>
+                            <td>
+                                <span class="fw-medium">1</span>
+                            </td>
+                            <td>
+                                R$3,99
+                            </td>
+                            <td>
+                                <a href="javascript:void(0);" class="action-icon text-danger"> <i class="mdi mdi-trash-can font-size-18"></i></a>
+                            </td>
+                        </tr>
+
                         </tbody>
                     </table>
                 </div>

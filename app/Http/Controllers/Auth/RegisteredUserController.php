@@ -14,6 +14,9 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
 
+use Illuminate\Support\Str;
+
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -40,11 +43,19 @@ class RegisteredUserController extends Controller
             'avatar' => ['required', 'image' ,'mimes:jpg,jpeg,png','max:4096'],
         ]);
 
-        if (request()->has('avatar')) {
-            $avatar = request()->file('avatar');
+
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+
+
+            $originalAvatarPath = public_path('/images/');
             $avatarName = time() . '.' . $avatar->getClientOriginalExtension();
-            $avatarPath = public_path('/images/');
-            $avatar->move($avatarPath, $avatarName);
+            $avatar->move($originalAvatarPath, $avatarName);
+
+            // Pasta adicional para criar a cópia do avatar
+            $additionalAvatarPath = public_path('/imagem_adicional/');
+            $copiedAvatarName = time() . '.' . $avatar->getClientOriginalExtension();
+            copy($originalAvatarPath . $avatarName, $additionalAvatarPath . $copiedAvatarName);
         }
 
         $user = User::create([
