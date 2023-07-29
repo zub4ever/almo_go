@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('content'); ?>
     <style>
         /* Estilo para centralizar horizontalmente e verticalmente */
@@ -89,6 +91,15 @@
     </div>
 
     <script>
+
+        function openFileExplorer() {
+            document.getElementById('target_image').click();
+            // Remova o evento de clique após a primeira captura
+            document.querySelector('.camera-button').removeEventListener('click', openFileExplorer);
+        }
+
+
+
         document.querySelector('.camera-button').addEventListener('click', function() {
             document.getElementById('target_image').click();
         });
